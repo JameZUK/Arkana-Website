@@ -85,6 +85,19 @@ a:hover { color: var(--highlight); }
     inset: 0;
     background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
     pointer-events: none;
+}
+
+/* CRT barrel curvature */
+.crt-curve {
+    position: fixed;
+    inset: -2px;
+    border-radius: 14px;
+    box-shadow:
+        inset 0 0 80px rgba(0, 0, 0, 0.35),
+        inset 0 0 200px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(0, 255, 65, 0.04);
+    pointer-events: none;
+    z-index: 9996;
     z-index: 9997;
 }
 
@@ -1091,11 +1104,45 @@ a:hover { color: var(--highlight); }
     padding-top: 24px;
     border-top: 1px solid rgba(0, 85, 24, 0.2);
 }
+/* Tic-tac-toe grid */
+.footer-ttt {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 18px);
+    grid-template-rows: repeat(3, 18px);
+    gap: 0;
+    margin-bottom: 12px;
+    opacity: 0.25;
+    transition: opacity 0.3s;
+}
+.footer-ttt:hover {
+    opacity: 0.6;
+}
+.footer-ttt span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--primary-ghost);
+    border: 1px solid rgba(0, 85, 24, 0.3);
+}
+
 .footer-easter-egg {
     font-size: 11px;
     letter-spacing: 2px;
     color: var(--primary-ghost);
     opacity: 0.5;
+}
+
+.footer-falken {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--primary-ghost);
+    opacity: 0;
+    transition: opacity 0.5s;
+    margin-top: 8px;
+}
+.footer-bottom:hover .footer-falken {
+    opacity: 0.3;
 }
 
 /* ===== Scroll Reveal Animations ===== */
@@ -1132,7 +1179,7 @@ a:hover { color: var(--highlight); }
     html { scroll-behavior: auto; }
 
     .preloader { display: none; }
-    .scanlines, .vignette, .hero-particles { display: none; }
+    .scanlines, .vignette, .crt-curve, .hero-particles { display: none; }
     body::before { display: none; }
 
     .hero-logo { animation: none; }

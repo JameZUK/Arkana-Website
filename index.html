@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=VT323&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/css/style.css?v=4">
+    <link rel="stylesheet" href="/css/style.css?v=5">
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -61,6 +61,12 @@
     </script>
 </head>
 <body>
+    <!--
+        LOGON: 7,1,1
+        HELLO, JOSHUA.
+
+        CPE 1704 TKS
+    -->
     <!-- Skip to content -->
     <a href="#main" class="skip-link">Skip to content</a>
 
@@ -76,6 +82,7 @@
     <!-- Persistent overlays -->
     <div class="scanlines" aria-hidden="true"></div>
     <div class="vignette" aria-hidden="true"></div>
+    <div class="crt-curve" aria-hidden="true"></div>
 
     <!-- Navigation -->
     <header id="nav-header" class="nav-header">
@@ -205,7 +212,9 @@
                     <div class="terminal-line" data-type="response" data-speed="15">STATUS: ONLINE</div>
                     <div class="terminal-line terminal-line--blank"></div>
                     <div class="terminal-line" data-type="command" data-speed="30">SHALL WE PLAY A GAME?</div>
-                    <div class="terminal-line" data-type="response" data-speed="15" data-highlight="true">HOW ABOUT MALWARE ANALYSIS?</div>
+                    <div class="terminal-line" data-type="response" data-speed="15">LOVE TO. HOW ABOUT GLOBAL THERMONUCLEAR WAR?</div>
+                    <div class="terminal-line" data-type="command" data-speed="30">LATER. RIGHT NOW LET'S PLAY</div>
+                    <div class="terminal-line" data-type="response" data-speed="15" data-highlight="true">MALWARE ANALYSIS</div>
                 </div>
 
                 <!-- Tagline -->
@@ -670,7 +679,13 @@
                 </div>
             </div>
             <div class="footer-bottom">
+                <div class="footer-ttt" aria-hidden="true" title="The only winning move is not to play.">
+                    <span>X</span><span>O</span><span>X</span>
+                    <span>O</span><span>X</span><span>O</span>
+                    <span>X</span><span>O</span><span>X</span>
+                </div>
                 <p class="footer-easter-egg">A STRANGE GAME. THE ONLY WINNING MOVE IS TO ANALYSE.</p>
+                <p class="footer-falken">GREETINGS, PROFESSOR FALKEN.</p>
             </div>
         </div>
     </footer>
@@ -686,6 +701,7 @@
         </div>
     </div>
 
-    <script defer src="/js/main.js?v=4"></script>
+    <!-- IS IT A GAME, OR IS IT REAL? -->
+    <script defer src="/js/main.js?v=5"></script>
 </body>
 </html>

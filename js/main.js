@@ -369,6 +369,41 @@
         });
     }
 
+    // ===== Konami Code Easter Egg =====
+    function initKonami() {
+        var sequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // up up down down left right left right B A
+        var pos = 0;
+
+        document.addEventListener('keydown', function (e) {
+            if (e.keyCode === sequence[pos]) {
+                pos++;
+                if (pos === sequence.length) {
+                    pos = 0;
+                    showFalken();
+                }
+            } else {
+                pos = 0;
+            }
+        });
+
+        function showFalken() {
+            var toast = document.createElement('div');
+            toast.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);' +
+                'font-family:VT323,Courier New,monospace;font-size:28px;color:#00ff41;' +
+                'text-shadow:0 0 20px rgba(0,255,65,0.6);z-index:10001;text-align:center;' +
+                'background:rgba(0,4,0,0.95);padding:40px 60px;border:1px solid #005518;' +
+                'opacity:0;transition:opacity 0.5s;pointer-events:none;';
+            toast.innerHTML = 'GREETINGS, PROFESSOR FALKEN.<br><br>' +
+                '<span style="font-size:18px;color:#00cc33;">SHALL WE PLAY A GAME?</span>';
+            document.body.appendChild(toast);
+            requestAnimationFrame(function () { toast.style.opacity = '1'; });
+            setTimeout(function () {
+                toast.style.opacity = '0';
+                setTimeout(function () { toast.remove(); }, 500);
+            }, 4000);
+        }
+    }
+
     // ===== Init =====
     document.addEventListener('DOMContentLoaded', function () {
         initPreloader();
@@ -379,5 +414,6 @@
         initGallery();
         initCopyButton();
         initLightbox();
+        initKonami();
     });
 })();
