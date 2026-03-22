@@ -354,8 +354,9 @@ a:hover { color: var(--highlight); }
     text-align: left;
     margin-bottom: 32px;
     min-height: 240px;
-    font-size: 15px;
-    line-height: 1.8;
+    font-family: 'VT323', 'Courier New', monospace;
+    font-size: 22px;
+    line-height: 1.7;
 }
 
 .terminal-line {
