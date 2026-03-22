@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkana — Binary Intelligence Platform</title>
+    <meta name="description" content="Arkana is an MCP server that gives your AI 259 binary analysis tools — decompilation, symbolic execution, debugging, YARA/capa/FLOSS, emulation, and a live web dashboard.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Arkana — Binary Intelligence Platform">
+    <meta property="og:description" content="Your entire malware analysis lab, behind one AI prompt. 259 MCP tools for binary analysis.">
+    <meta property="og:image" content="https://arkana.re/img/og-image.png">
+    <meta property="og:url" content="https://arkana.re/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Arkana">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Arkana — Binary Intelligence Platform">
+    <meta name="twitter:description" content="Your entire malware analysis lab, behind one AI prompt. 259 MCP tools for binary analysis.">
+    <meta name="twitter:image" content="https://arkana.re/img/og-image.png">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://arkana.re/">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/logo_icon.svg" type="image/svg+xml">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Arkana",
+        "description": "An MCP server exposing 259 binary analysis tools to AI clients. Supports PE, ELF, and Mach-O formats with integrations for angr, capa, FLOSS, YARA, Binary Refinery, Qiling, and Speakeasy.",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Linux, macOS, Windows (Docker)",
+        "url": "https://arkana.re/",
+        "license": "https://opensource.org/licenses/MIT",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "JameZUK"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Skip to content -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Preloader -->
+    <div id="preloader" class="preloader" aria-hidden="true">
+        <div class="preloader-terminal">
+            <span class="preloader-line" data-text="ARKANA v2.0.0 ONLINE"></span>
+            <span class="preloader-line preloader-line--delay" data-text="SYSTEM READY"></span>
+        </div>
+        <div class="preloader-scanline"></div>
+    </div>
+
+    <!-- Persistent overlays -->
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header id="nav-header" class="nav-header">
+        <nav class="nav" aria-label="Main navigation">
+            <a href="#hero" class="nav-logo" aria-label="Arkana home">
+                <svg class="nav-logo-icon" viewBox="0 0 300 300" width="28" height="28" aria-hidden="true">
+                    <defs>
+                        <radialGradient id="navPupil" cx="50%" cy="40%" r="50%">
+                            <stop offset="0%" style="stop-color:#ccffcc"/>
+                            <stop offset="35%" style="stop-color:#00ff41;stop-opacity:0.9"/>
+                            <stop offset="100%" style="stop-color:#001400"/>
+                        </radialGradient>
+                    </defs>
+                    <path d="M18,134 Q68,48 150,48 Q232,48 282,134 Q232,220 150,220 Q68,220 18,134 Z" fill="#000c00" stroke="#00ff41" stroke-width="5"/>
+                    <ellipse cx="150" cy="134" rx="60" ry="60" fill="#001800" stroke="#00ff41" stroke-width="3"/>
+                    <ellipse cx="150" cy="134" rx="24" ry="24" fill="url(#navPupil)"/>
+                    <ellipse cx="150" cy="134" rx="9" ry="9" fill="#99ffaa"/>
+                </svg>
+                <span class="nav-logo-text">ARKANA</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#features" class="nav-link">FEATURES</a>
+                <a href="#demo" class="nav-link">DEMO</a>
+                <a href="#dashboard" class="nav-link">DASHBOARD</a>
+                <a href="#reports" class="nav-link">REPORTS</a>
+                <a href="#quickstart" class="nav-link nav-link--cta">GET STARTED</a>
+                <a href="https://github.com/JameZUK/Arkana" class="nav-link nav-link--icon" aria-label="View on GitHub" target="_blank" rel="noopener noreferrer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+            </div>
+            <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main id="main">
+
+        <!-- Section 1: Hero — The WOPR Login -->
+        <section id="hero" class="hero">
+            <div class="hero-corner hero-corner--tl" aria-hidden="true"></div>
+            <div class="hero-corner hero-corner--tr" aria-hidden="true"></div>
+            <div class="hero-corner hero-corner--bl" aria-hidden="true"></div>
+            <div class="hero-corner hero-corner--br" aria-hidden="true"></div>
+
+            <!-- Particles -->
+            <div class="hero-particles" aria-hidden="true">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+
+            <div class="hero-content">
+                <!-- Logo -->
+                <div class="hero-logo" aria-label="Arkana eye logo">
+                    <svg class="hero-logo-svg" viewBox="0 0 300 220" width="160" height="120" aria-hidden="true">
+                        <defs>
+                            <radialGradient id="heroPupil" cx="50%" cy="40%" r="50%">
+                                <stop offset="0%" style="stop-color:#ccffcc"/>
+                                <stop offset="35%" style="stop-color:#00ff41;stop-opacity:0.9"/>
+                                <stop offset="100%" style="stop-color:#001400"/>
+                            </radialGradient>
+                            <radialGradient id="heroIris" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" style="stop-color:#001000"/>
+                                <stop offset="60%" style="stop-color:#002800"/>
+                                <stop offset="100%" style="stop-color:#004400"/>
+                            </radialGradient>
+                            <radialGradient id="heroAura" cx="50%" cy="50%" r="50%">
+                                <stop offset="0%" style="stop-color:#00ff41;stop-opacity:0.4"/>
+                                <stop offset="100%" style="stop-color:#000800;stop-opacity:0"/>
+                            </radialGradient>
+                            <filter id="heroGlow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="6" result="b"/>
+                                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+                        <ellipse cx="150" cy="110" rx="140" ry="85" fill="url(#heroAura)" opacity="0.5"/>
+                        <path d="M18,110 Q68,30 150,30 Q232,30 282,110 Q232,190 150,190 Q68,190 18,110 Z" fill="#000c00"/>
+                        <path d="M18,110 Q68,30 150,30 Q232,30 282,110 Q232,190 150,190 Q68,190 18,110 Z" fill="none" stroke="#00ff41" stroke-width="3" filter="url(#heroGlow)" opacity="0.9"/>
+                        <ellipse cx="150" cy="110" rx="60" ry="60" fill="url(#heroIris)"/>
+                        <ellipse cx="150" cy="110" rx="60" ry="60" fill="none" stroke="#00ff41" stroke-width="2" filter="url(#heroGlow)" opacity="0.9"/>
+                        <g stroke="#00ff41" stroke-width="2.5" opacity="0.7">
+                            <line x1="150" y1="46" x2="150" y2="59"/>
+                            <line x1="150" y1="161" x2="150" y2="174"/>
+                            <line x1="86" y1="110" x2="99" y2="110"/>
+                            <line x1="201" y1="110" x2="214" y2="110"/>
+                        </g>
+                        <ellipse cx="150" cy="110" rx="24" ry="24" fill="url(#heroPupil)" filter="url(#heroGlow)"/>
+                        <ellipse cx="150" cy="110" rx="24" ry="24" fill="none" stroke="#00ff41" stroke-width="2" opacity="0.9"/>
+                        <ellipse cx="150" cy="110" rx="9" ry="9" fill="#99ffaa" filter="url(#heroGlow)"/>
+                        <ellipse cx="146" cy="106" rx="3.5" ry="3" fill="white" opacity="0.8"/>
+                        <g stroke="#00ff41" stroke-width="2" opacity="0.6">
+                            <line x1="150" y1="30" x2="150" y2="16"/>
+                            <line x1="120" y1="38" x2="113" y2="26"/>
+                            <line x1="180" y1="38" x2="187" y2="26"/>
+                            <line x1="96" y1="58" x2="87" y2="48"/>
+                            <line x1="204" y1="58" x2="213" y2="48"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Terminal block -->
+                <div class="hero-terminal" role="presentation">
+                    <div class="terminal-line" data-type="command" data-speed="30">CONNECT ARKANA.RE</div>
+                    <div class="terminal-line" data-type="response" data-speed="15">CONNECTED.</div>
+                    <div class="terminal-line terminal-line--blank"></div>
+                    <div class="terminal-line" data-type="command" data-speed="30">IDENTIFY SYSTEM</div>
+                    <div class="terminal-line" data-type="response" data-speed="15">ARKANA // BINARY INTELLIGENCE PLATFORM</div>
+                    <div class="terminal-line" data-type="response" data-speed="15">259 MCP TOOLS ACTIVE</div>
+                    <div class="terminal-line" data-type="response" data-speed="15">STATUS: ONLINE</div>
+                    <div class="terminal-line terminal-line--blank"></div>
+                    <div class="terminal-line" data-type="command" data-speed="30">SHALL WE PLAY A GAME?</div>
+                    <div class="terminal-line" data-type="response" data-speed="15" data-highlight="true">HOW ABOUT MALWARE ANALYSIS?</div>
+                </div>
+
+                <!-- Tagline -->
+                <p class="hero-tagline">Your Entire Malware Analysis Lab, Behind One AI Prompt</p>
+
+                <!-- CTAs -->
+                <div class="hero-ctas">
+                    <a href="#quickstart" class="btn btn--primary">GET STARTED</a>
+                    <a href="https://github.com/JameZUK/Arkana" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB</a>
+                </div>
+            </div>
+
+            <!-- Scroll chevron -->
+            <div class="hero-scroll" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+        </section>
+
+        <!-- Section 2: Elevator Pitch -->
+        <section id="pitch" class="section pitch">
+            <div class="container">
+                <p class="pitch-text reveal">
+                    Arkana is an <span class="glow">MCP server</span> that gives your AI
+                    <span class="glow">259 binary analysis tools</span> &mdash; decompilation,
+                    symbolic execution, interactive debugging,
+                    <span class="glow">YARA/capa/FLOSS</span>, emulation, and a
+                    <span class="glow">live web dashboard</span> &mdash; so you can investigate
+                    malware by describing what you want to know.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 3: Stats — Threat Assessment -->
+        <section id="stats" class="section stats">
+            <div class="container">
+                <h2 class="section-label reveal">// THREAT ASSESSMENT</h2>
+                <div class="stats-grid">
+                    <div class="stat-panel bracket-panel reveal">
+                        <div class="stat-number" data-target="259">0</div>
+                        <div class="stat-label">MCP Tools</div>
+                        <div class="stat-sublabel">TOOLS ACTIVE</div>
+                    </div>
+                    <div class="stat-panel bracket-panel reveal">
+                        <div class="stat-number" data-target="14">0</div>
+                        <div class="stat-label">Dashboard Pages</div>
+                        <div class="stat-sublabel">DASHBOARD</div>
+                    </div>
+                    <div class="stat-panel bracket-panel reveal">
+                        <div class="stat-number" data-target="7">0</div>
+                        <div class="stat-label">Binary Formats</div>
+                        <div class="stat-sublabel">FORMATS</div>
+                    </div>
+                    <div class="stat-panel bracket-panel reveal">
+                        <div class="stat-number" data-target="7">0</div>
+                        <div class="stat-label">Example Reports</div>
+                        <div class="stat-sublabel">ANALYSES</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Demo — CRT Monitor -->
+        <section id="demo" class="section demo">
+            <div class="container">
+                <h2 class="section-label reveal">// LIVE DEMONSTRATION</h2>
+                <p class="section-subtitle reveal">Full AsyncRAT triage &mdash; from file open to verdict &mdash; in one session</p>
+                <div class="crt-frame reveal">
+                    <div class="crt-bezel">
+                        <div class="crt-screen">
+                            <video autoplay muted loop playsinline preload="metadata" poster="/img/screenshots/demo-poster.png">
+                                <source src="/img/demo.webm" type="video/webm">
+                                <source src="/img/demo.mp4" type="video/mp4">
+                                <p>Your browser doesn't support embedded video. <a href="https://github.com/JameZUK/Arkana/blob/main/docs/demos/demo-asyncrat.gif">View the demo on GitHub</a>.</p>
+                            </video>
+                            <div class="crt-scanlines" aria-hidden="true"></div>
+                            <div class="crt-vignette" aria-hidden="true"></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="demo-caption reveal">Open file &rarr; Auto-enrichment &rarr; Triage &rarr; Decompile &rarr; IOC extraction &rarr; Full report</p>
+            </div>
+        </section>
+
+        <!-- Section 5: Arsenal — Feature Panels -->
+        <section id="features" class="section features">
+            <div class="container">
+                <h2 class="section-label reveal">// ARSENAL</h2>
+
+                <div class="feature-row reveal-left">
+                    <div class="feature-text">
+                        <h3 class="feature-title">Auto-Enrichment</h3>
+                        <p class="feature-headline">"Open a file. Everything else is automatic."</p>
+                        <ul class="feature-list">
+                            <li>Classification, triage, and similarity hashing on load</li>
+                            <li>MITRE ATT&CK mapping and IOC extraction</li>
+                            <li>Background decompilation sweep with scoring</li>
+                            <li>Library function identification via FLIRT</li>
+                        </ul>
+                    </div>
+                    <div class="feature-screenshot crt-frame-mini">
+                        <img src="/img/screenshots/overview.png" alt="Arkana dashboard overview showing auto-enrichment results" loading="lazy" width="600" height="375">
+                    </div>
+                </div>
+
+                <div class="feature-row feature-row--reverse reveal-right">
+                    <div class="feature-text">
+                        <h3 class="feature-title">259 MCP Tools</h3>
+                        <p class="feature-headline">"One prompt. 259 possibilities."</p>
+                        <ul class="feature-list">
+                            <li>Decompilation, disassembly, and CFG analysis via angr</li>
+                            <li>YARA scanning, capa matching, FLOSS string extraction</li>
+                            <li>Symbolic execution and constraint solving</li>
+                            <li>Binary Refinery: 200+ data transforms</li>
+                        </ul>
+                    </div>
+                    <div class="feature-screenshot crt-frame-mini">
+                        <img src="/img/screenshots/functions.png" alt="Arkana function explorer with enrichment scores" loading="lazy" width="600" height="375">
+                    </div>
+                </div>
+
+                <div class="feature-row reveal-left">
+                    <div class="feature-text">
+                        <h3 class="feature-title">Interactive Debugger</h3>
+                        <p class="feature-headline">"Step through binaries with natural language."</p>
+                        <ul class="feature-list">
+                            <li>29 debug tools: step, breakpoints, watchpoints, snapshots</li>
+                            <li>Qiling-powered emulation with Windows API stubs</li>
+                            <li>API call tracing with argument/return capture</li>
+                            <li>Memory search and user-defined function stubs</li>
+                        </ul>
+                    </div>
+                    <div class="feature-screenshot crt-frame-mini">
+                        <div class="terminal-mock">
+                            <div class="terminal-mock-header">
+                                <span class="terminal-mock-dot"></span>
+                                <span class="terminal-mock-dot"></span>
+                                <span class="terminal-mock-dot"></span>
+                                <span class="terminal-mock-title">debug session</span>
+                            </div>
+                            <pre class="terminal-mock-body"><code>&gt; debug_start("malware.exe")
+  Session created. Entry: 0x401000
+
+&gt; debug_set_breakpoint(0x401234)
+  Breakpoint #1 set at 0x401234
+
+&gt; debug_continue()
+  Hit breakpoint #1 at 0x401234
+  EAX=0x00000001 ECX=0x7FFE0300
+
+&gt; debug_read_memory(0x401234, 32)
+  55 8B EC 83 EC 10 53 56
+  57 8B 7D 08 85 FF 74 2A</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-row feature-row--reverse reveal-right">
+                    <div class="feature-text">
+                        <h3 class="feature-title">Web Dashboard</h3>
+                        <p class="feature-headline">"See everything. Miss nothing."</p>
+                        <ul class="feature-list">
+                            <li>14-page live dashboard with CRT aesthetic</li>
+                            <li>Interactive call graph with Cytoscape.js</li>
+                            <li>Hex view, strings analysis, MITRE ATT&CK matrix</li>
+                            <li>Real-time progress tracking and SSE updates</li>
+                        </ul>
+                    </div>
+                    <div class="feature-screenshot crt-frame-mini">
+                        <img src="/img/screenshots/callgraph.png" alt="Arkana interactive call graph visualization" loading="lazy" width="600" height="375">
+                    </div>
+                </div>
+
+                <div class="feature-row reveal-left">
+                    <div class="feature-text">
+                        <h3 class="feature-title">Multi-Format Support</h3>
+                        <p class="feature-headline">"PE. ELF. Mach-O. .NET. Go. Rust. Shellcode."</p>
+                        <div class="format-badges">
+                            <span class="format-badge">PE</span>
+                            <span class="format-badge">ELF</span>
+                            <span class="format-badge">Mach-O</span>
+                            <span class="format-badge">.NET</span>
+                            <span class="format-badge">Go</span>
+                            <span class="format-badge">Rust</span>
+                            <span class="format-badge">VB6</span>
+                            <span class="format-badge">Shellcode</span>
+                        </div>
+                        <ul class="feature-list">
+                            <li>Specialized parsers for each format</li>
+                            <li>Framework-specific analysis (.NET metadata, Go symbols)</li>
+                            <li>Automatic format detection and fallback modes</li>
+                        </ul>
+                    </div>
+                    <div class="feature-screenshot crt-frame-mini">
+                        <img src="/img/screenshots/sections.png" alt="Arkana section map with entropy heatmap" loading="lazy" width="600" height="375">
+                    </div>
+                </div>
+
+                <div class="feature-row feature-row--reverse reveal-right">
+                    <div class="feature-text">
+                        <h3 class="feature-title">Binary Refinery</h3>
+                        <p class="feature-headline">"200+ data transforms at your fingertips."</p>
+                        <ul class="feature-list">
+                            <li>Decode, decrypt, decompress, and carve</li>
+                            <li>XOR brute-force, base64, custom ciphers</li>
+                            <li>IOC extraction and format conversion</li>
+                            <li>Pipeline composition for complex transforms</li>
+                        </ul>
+                    </div>
+                    <div class="feature-screenshot crt-frame-mini">
+                        <img src="/img/screenshots/strings.png" alt="Arkana strings analysis with FLOSS categorization" loading="lazy" width="600" height="375">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Dashboard Gallery -->
+        <section id="dashboard" class="section gallery">
+            <div class="container">
+                <h2 class="section-label reveal">// DASHBOARD GALLERY</h2>
+                <div class="gallery-wrap reveal">
+                    <button class="gallery-arrow gallery-arrow--left" aria-label="Scroll left">&lsaquo;</button>
+                    <div class="gallery-track" id="gallery-track">
+                        <div class="gallery-item">
+                            <div class="crt-frame-mini">
+                                <img src="/img/screenshots/overview.png" alt="Dashboard Overview" loading="lazy" width="400" height="250">
+                            </div>
+                            <span class="gallery-label">OVERVIEW</span>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="crt-frame-mini">
+                                <img src="/img/screenshots/functions.png" alt="Function Explorer" loading="lazy" width="400" height="250">
+                            </div>
+                            <span class="gallery-label">FUNCTIONS</span>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="crt-frame-mini">
+                                <img src="/img/screenshots/callgraph.png" alt="Call Graph" loading="lazy" width="400" height="250">
+                            </div>
+                            <span class="gallery-label">CALL GRAPH</span>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="crt-frame-mini">
+                                <img src="/img/screenshots/hexview.png" alt="Hex View" loading="lazy" width="400" height="250">
+                            </div>
+                            <span class="gallery-label">HEX VIEW</span>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="crt-frame-mini">
+                                <img src="/img/screenshots/strings.png" alt="Strings Analysis" loading="lazy" width="400" height="250">
+                            </div>
+                            <span class="gallery-label">STRINGS</span>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="crt-frame-mini">
+                                <img src="/img/screenshots/mitre.png" alt="MITRE ATT&CK Matrix" loading="lazy" width="400" height="250">
+                            </div>
+                            <span class="gallery-label">MITRE ATT&CK</span>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="crt-frame-mini">
+                                <img src="/img/screenshots/sections.png" alt="Section Map" loading="lazy" width="400" height="250">
+                            </div>
+                            <span class="gallery-label">SECTIONS</span>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="crt-frame-mini">
+                                <img src="/img/screenshots/diff.png" alt="Binary Diff" loading="lazy" width="400" height="250">
+                            </div>
+                            <span class="gallery-label">BINARY DIFF</span>
+                        </div>
+                    </div>
+                    <button class="gallery-arrow gallery-arrow--right" aria-label="Scroll right">&rsaquo;</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Example Reports -->
+        <section id="reports" class="section reports">
+            <div class="container">
+                <h2 class="section-label reveal">// FIELD REPORTS</h2>
+                <p class="section-subtitle reveal">Real malware, fully analysed. Every report generated by AI using Arkana.</p>
+                <div class="reports-grid">
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-asyncrat.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--rat">RAT</span>
+                        <h3 class="report-name">AsyncRAT</h3>
+                        <p class="report-summary">.NET remote access trojan with encrypted C2, keylogging, and screen capture</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-lockbit.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--ransomware">RANSOMWARE</span>
+                        <h3 class="report-name">LockBit</h3>
+                        <p class="report-summary">Ransomware with privilege escalation, service termination, and shadow copy deletion</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-stealc.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--stealer">STEALER</span>
+                        <h3 class="report-name">StealC</h3>
+                        <p class="report-summary">Information stealer targeting browsers, crypto wallets, and credential stores</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-valleyrat.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--rat">RAT</span>
+                        <h3 class="report-name">ValleyRAT</h3>
+                        <p class="report-summary">Chinese-origin RAT with shellcode injection and anti-analysis techniques</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-bruteratel.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--c2">C2 FRAMEWORK</span>
+                        <h3 class="report-name">Brute Ratel</h3>
+                        <p class="report-summary">Advanced C2 framework with syscall evasion and encrypted configuration</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-crackme-z3s.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--ctf">CTF</span>
+                        <h3 class="report-name">CrackMe (Z3)</h3>
+                        <p class="report-summary">Constraint-solving challenge solved with Z3 symbolic execution</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--generic">ANALYSIS</span>
+                        <h3 class="report-name">Generic PE</h3>
+                        <p class="report-summary">Comprehensive PE analysis demonstrating full tool coverage</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Comparison Matrix -->
+        <section id="compare" class="section compare">
+            <div class="container">
+                <h2 class="section-label reveal">// TACTICAL COMPARISON</h2>
+                <div class="compare-table-wrap reveal">
+                    <table class="compare-table">
+                        <thead>
+                            <tr>
+                                <th>CAPABILITY</th>
+                                <th class="compare-highlight">ARKANA</th>
+                                <th>Ghidra</th>
+                                <th>IDA Pro</th>
+                                <th>CyberChef</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>AI-Driven Analysis</td>
+                                <td class="compare-highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                            </tr>
+                            <tr>
+                                <td>MCP Protocol</td>
+                                <td class="compare-highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Decompilation</td>
+                                <td class="compare-highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="check dim">&#10003;</span></td>
+                                <td><span class="check dim">&#10003;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Symbolic Execution</td>
+                                <td class="compare-highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Interactive Debugging</td>
+                                <td class="compare-highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="check dim">&#10003;</span></td>
+                                <td><span class="check dim">&#10003;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                            </tr>
+                            <tr>
+                                <td>YARA / capa / FLOSS</td>
+                                <td class="compare-highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="partial">plugin</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Data Transforms</td>
+                                <td class="compare-highlight"><span class="check">&#10003;</span> 200+</td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="check dim">&#10003;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Live Web Dashboard</td>
+                                <td class="compare-highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Auto-Enrichment</td>
+                                <td class="compare-highlight"><span class="check">&#10003;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                            </tr>
+                            <tr>
+                                <td>Open Source / Free</td>
+                                <td class="compare-highlight"><span class="check">&#10003;</span> MIT</td>
+                                <td><span class="check dim">&#10003;</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                                <td><span class="check dim">&#10003;</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Quick Start -->
+        <section id="quickstart" class="section quickstart">
+            <div class="container">
+                <h2 class="section-label reveal">// GET STARTED</h2>
+                <p class="section-subtitle reveal">Up and running in 4 commands</p>
+                <div class="quickstart-terminal reveal">
+                    <div class="terminal-chrome">
+                        <span class="terminal-dot terminal-dot--red"></span>
+                        <span class="terminal-dot terminal-dot--yellow"></span>
+                        <span class="terminal-dot terminal-dot--green"></span>
+                        <span class="terminal-title">terminal</span>
+                        <button class="terminal-copy" id="copy-quickstart" aria-label="Copy commands">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+                            <span class="copy-label">COPY</span>
+                        </button>
+                    </div>
+                    <pre class="terminal-body" id="quickstart-code"><code><span class="terminal-prompt">$</span> git clone https://github.com/JameZUK/Arkana.git
+<span class="terminal-prompt">$</span> cd Arkana && ./run.sh --build
+<span class="terminal-prompt">$</span> claude mcp add --scope project arkana -- ./run.sh --stdio
+<span class="terminal-prompt">$</span> claude</code></pre>
+                </div>
+                <p class="quickstart-note reveal">Requires Docker and <a href="https://claude.ai/claude-code" target="_blank" rel="noopener noreferrer">Claude Code</a>. See the <a href="https://github.com/JameZUK/Arkana#readme" target="_blank" rel="noopener noreferrer">full installation guide</a> for details.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <svg class="footer-logo" viewBox="0 0 300 300" width="40" height="40" aria-hidden="true">
+                        <path d="M18,134 Q68,48 150,48 Q232,48 282,134 Q232,220 150,220 Q68,220 18,134 Z" fill="#000c00" stroke="#00ff41" stroke-width="4"/>
+                        <ellipse cx="150" cy="134" rx="60" ry="60" fill="#001800" stroke="#00ff41" stroke-width="2.5"/>
+                        <ellipse cx="150" cy="134" rx="24" ry="24" fill="#003800"/>
+                        <ellipse cx="150" cy="134" rx="9" ry="9" fill="#00ff41"/>
+                    </svg>
+                    <span class="footer-name">ARKANA</span>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/JameZUK/Arkana" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://github.com/JameZUK/Arkana/tree/main/docs" target="_blank" rel="noopener noreferrer">Documentation</a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/tools-reference.md" target="_blank" rel="noopener noreferrer">Tools Reference</a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-easter-egg">A STRANGE GAME. THE ONLY WINNING MOVE IS TO ANALYSE.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script defer src="/js/main.js"></script>
+</body>
+</html>
