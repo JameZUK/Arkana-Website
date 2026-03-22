@@ -654,7 +654,7 @@
     }
 
     // ===== Init =====
-    document.addEventListener('DOMContentLoaded', function () {
+    function init() {
         // Remove SMIL blink animation for reduced motion
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             var eyelid = document.querySelector('.hero-eyelid');
@@ -676,5 +676,13 @@
         initBackToTop();
         initQuickstartTyping();
         initCompareHint();
-    });
+    }
+
+    // defer scripts run after parsing, but DOMContentLoaded can be missed
+    // on Firefox mobile (bfcache, race conditions). Check readyState to be safe.
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 })();
