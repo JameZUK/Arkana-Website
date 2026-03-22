@@ -99,8 +99,6 @@
                     var span = document.createElement('span');
                     span.className = 'typed-text';
                     span.textContent = text;
-                    // Preserve the original text content
-                    var originalText = line.textContent;
                     line.textContent = '';
                     line.appendChild(span);
                 }
@@ -304,8 +302,23 @@
         var lbInner = lightbox ? lightbox.querySelector('.demo-lightbox-inner') : null;
         var closeBtn = lightbox ? lightbox.querySelector('.demo-lightbox-close') : null;
         var lbImg = null; // created on demand
+        var triggerElement = null; // store the element that opened the lightbox
+        var inlineVideo = document.querySelector('.crt-screen video');
 
         if (!lightbox || !lbInner) return;
+
+        function trapFocus(e) {
+            if (e.key !== 'Tab') return;
+            var focusable = lightbox.querySelectorAll('button, [href], video, [tabindex]:not([tabindex="-1"])');
+            if (!focusable.length) return;
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            if (e.shiftKey) {
+                if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+            } else {
+                if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+            }
+        }
 
         function closeLightbox() {
             lightbox.classList.remove('open');
@@ -313,9 +326,16 @@
             document.body.style.overflow = '';
             if (lbVideo) { lbVideo.pause(); lbVideo.style.display = 'none'; }
             if (lbImg) lbImg.style.display = 'none';
+            lightbox.removeEventListener('keydown', trapFocus);
+            // Resume inline video
+            if (inlineVideo) inlineVideo.play();
+            // Restore focus to trigger
+            if (triggerElement) { triggerElement.focus(); triggerElement = null; }
         }
 
         function openVideo() {
+            // Pause inline video
+            if (inlineVideo) inlineVideo.pause();
             if (lbImg) lbImg.style.display = 'none';
             if (lbVideo) {
                 lbVideo.style.display = 'block';
@@ -325,9 +345,13 @@
             lightbox.classList.add('open');
             lightbox.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
+            lightbox.addEventListener('keydown', trapFocus);
+            if (closeBtn) closeBtn.focus();
         }
 
         function openImage(src, alt) {
+            // Pause inline video
+            if (inlineVideo) inlineVideo.pause();
             if (lbVideo) lbVideo.style.display = 'none';
             if (!lbImg) {
                 lbImg = document.createElement('img');
@@ -340,6 +364,8 @@
             lightbox.classList.add('open');
             lightbox.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
+            lightbox.addEventListener('keydown', trapFocus);
+            if (closeBtn) closeBtn.focus();
         }
 
         // Demo video expand button (overlay on top of video)
@@ -348,6 +374,7 @@
             demoBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
+                triggerElement = demoBtn;
                 openVideo();
             });
         }
@@ -359,11 +386,13 @@
             frame.setAttribute('role', 'button');
             frame.setAttribute('tabindex', '0');
             frame.addEventListener('click', function () {
+                triggerElement = frame;
                 openImage(img.src, img.alt);
             });
             frame.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
+                    triggerElement = frame;
                     openImage(img.src, img.alt);
                 }
             });
@@ -381,13 +410,33 @@
         });
     }
 
+    // ===== Video Pause Button =====
+    function initPauseButton() {
+        var btn = document.getElementById('demo-pause-btn');
+        var video = document.querySelector('.crt-screen video');
+        if (!btn || !video) return;
+
+        btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (video.paused) {
+                video.play();
+                btn.innerHTML = '&#9646;&#9646;';
+                btn.setAttribute('aria-label', 'Pause video');
+            } else {
+                video.pause();
+                btn.innerHTML = '&#9654;';
+                btn.setAttribute('aria-label', 'Play video');
+            }
+        });
+    }
+
     // ===== Konami Code Easter Egg =====
     function initKonami() {
-        var sequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // up up down down left right left right B A
+        var sequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
         var pos = 0;
 
         document.addEventListener('keydown', function (e) {
-            if (e.keyCode === sequence[pos]) {
+            if (e.key === sequence[pos]) {
                 pos++;
                 if (pos === sequence.length) {
                     pos = 0;
@@ -414,6 +463,65 @@
                 setTimeout(function () { toast.remove(); }, 500);
             }, 4000);
         }
+    }
+
+    // ===== WOPR Countdown Timer =====
+    function initWoprCountdown() {
+        var container = document.getElementById('wopr-countdown');
+        if (!container) return;
+
+        var hEl = container.querySelector('[data-unit="h"]');
+        var mEl = container.querySelector('[data-unit="m"]');
+        var sEl = container.querySelector('[data-unit="s"]');
+
+        // Start from a dramatic countdown (e.g. ~2h 45m)
+        var totalSeconds = 2 * 3600 + 45 * 60 + 30;
+
+        function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+        function update() {
+            if (totalSeconds <= 0) totalSeconds = 2 * 3600 + 45 * 60 + 30; // reset
+            var h = Math.floor(totalSeconds / 3600);
+            var m = Math.floor((totalSeconds % 3600) / 60);
+            var s = totalSeconds % 60;
+            hEl.textContent = pad(h);
+            mEl.textContent = pad(m);
+            sEl.textContent = pad(s);
+            totalSeconds--;
+        }
+
+        update();
+        setInterval(update, 1000);
+    }
+
+    // ===== WOPR Indicator Lights =====
+    function initWoprLights() {
+        var grids = document.querySelectorAll('.wopr-lights-grid');
+        if (!grids.length) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        // Randomly dim/undim LEDs to simulate activity
+        function flicker() {
+            grids.forEach(function (grid) {
+                var leds = grid.querySelectorAll('.wopr-led');
+                leds.forEach(function (led) {
+                    // Each LED has a ~15% chance of toggling per tick
+                    if (Math.random() < 0.15) {
+                        led.classList.toggle('dim');
+                    }
+                });
+            });
+        }
+
+        // Start some LEDs dimmed
+        grids.forEach(function (grid) {
+            var leds = grid.querySelectorAll('.wopr-led');
+            leds.forEach(function (led) {
+                if (Math.random() < 0.3) led.classList.add('dim');
+            });
+        });
+
+        setInterval(flicker, 400);
     }
 
     // ===== Scroll Progress =====
@@ -467,7 +575,6 @@
 
         // Hide lines initially for typing effect
         lines.forEach(function (line) {
-            line.dataset.original = line.innerHTML;
             line.innerHTML = '';
         });
 
@@ -548,6 +655,11 @@
 
     // ===== Init =====
     document.addEventListener('DOMContentLoaded', function () {
+        // Remove SMIL blink animation for reduced motion
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            var eyelid = document.querySelector('.hero-eyelid');
+            if (eyelid) eyelid.remove();
+        }
         initPreloader();
         initNav();
         initHeroTyping();
@@ -556,7 +668,10 @@
         initGallery();
         initCopyButton();
         initLightbox();
+        initPauseButton();
         initKonami();
+        initWoprCountdown();
+        initWoprLights();
         initScrollProgress();
         initBackToTop();
         initQuickstartTyping();
