@@ -262,7 +262,7 @@
             <div class="container">
                 <h2 class="section-label reveal">// LIVE DEMONSTRATION</h2>
                 <p class="section-subtitle reveal">Full AsyncRAT triage &mdash; from file open to verdict &mdash; in one session</p>
-                <div class="crt-frame reveal">
+                <div class="crt-frame reveal" id="demo-frame" role="button" tabindex="0" aria-label="Click to expand demo video">
                     <div class="crt-bezel">
                         <div class="crt-screen">
                             <video autoplay muted loop playsinline preload="metadata" poster="/img/screenshots/demo-poster.png">
@@ -274,6 +274,7 @@
                             <div class="crt-vignette" aria-hidden="true"></div>
                         </div>
                     </div>
+                    <div class="crt-expand-hint" aria-hidden="true">CLICK TO EXPAND</div>
                 </div>
                 <p class="demo-caption reveal">Open file &rarr; Auto-enrichment &rarr; Triage &rarr; Decompile &rarr; IOC extraction &rarr; Full report</p>
             </div>
@@ -661,6 +662,17 @@
             </div>
         </div>
     </footer>
+
+    <!-- Demo Lightbox -->
+    <div class="demo-lightbox" id="demo-lightbox" aria-hidden="true">
+        <div class="demo-lightbox-inner">
+            <button class="demo-lightbox-close" aria-label="Close expanded view">ESC / CLOSE</button>
+            <video id="demo-lightbox-video" muted loop playsinline>
+                <source src="/img/demo.webm" type="video/webm">
+                <source src="/img/demo.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 
     <script defer src="/js/main.js"></script>
 </body>

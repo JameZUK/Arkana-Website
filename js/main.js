@@ -285,6 +285,51 @@
         });
     }
 
+    // ===== Demo Lightbox =====
+    function initDemoLightbox() {
+        var frame = document.getElementById('demo-frame');
+        var lightbox = document.getElementById('demo-lightbox');
+        var lbVideo = document.getElementById('demo-lightbox-video');
+        var closeBtn = lightbox ? lightbox.querySelector('.demo-lightbox-close') : null;
+
+        if (!frame || !lightbox || !lbVideo) return;
+
+        function openLightbox() {
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            lbVideo.currentTime = 0;
+            lbVideo.play();
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            lbVideo.pause();
+            document.body.style.overflow = '';
+        }
+
+        frame.addEventListener('click', openLightbox);
+        frame.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openLightbox();
+            }
+        });
+
+        // Close on backdrop click (but not on video click)
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+        if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+                closeLightbox();
+            }
+        });
+    }
+
     // ===== Init =====
     document.addEventListener('DOMContentLoaded', function () {
         initPreloader();
@@ -294,5 +339,6 @@
         initStatCounters();
         initGallery();
         initCopyButton();
+        initDemoLightbox();
     });
 })();
