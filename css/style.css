@@ -581,6 +581,11 @@ a:hover { color: var(--highlight); }
 .crt-frame[role="button"] {
     cursor: pointer;
 }
+.crt-frame[role="button"] video,
+.crt-frame[role="button"] .crt-scanlines,
+.crt-frame[role="button"] .crt-vignette {
+    pointer-events: none;
+}
 .crt-frame[role="button"]:hover .crt-expand-hint {
     color: var(--primary-dim);
 }
@@ -638,6 +643,22 @@ a:hover { color: var(--highlight); }
 .demo-lightbox-close:hover {
     color: var(--primary);
     border-color: var(--primary);
+}
+.demo-lightbox-inner img {
+    width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border: 1px solid var(--primary-ghost);
+    border-radius: 4px;
+}
+
+/* Expandable screenshots */
+.crt-frame-mini[role="button"] {
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+.crt-frame-mini[role="button"]:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
 }
 
 .demo-caption {

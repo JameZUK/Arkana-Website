@@ -285,44 +285,88 @@
         });
     }
 
-    // ===== Demo Lightbox =====
-    function initDemoLightbox() {
-        var frame = document.getElementById('demo-frame');
+    // ===== Lightbox (demo video + screenshots) =====
+    function initLightbox() {
         var lightbox = document.getElementById('demo-lightbox');
         var lbVideo = document.getElementById('demo-lightbox-video');
+        var lbInner = lightbox ? lightbox.querySelector('.demo-lightbox-inner') : null;
         var closeBtn = lightbox ? lightbox.querySelector('.demo-lightbox-close') : null;
+        var lbImg = null; // created on demand
 
-        if (!frame || !lightbox || !lbVideo) return;
-
-        function openLightbox() {
-            lightbox.classList.add('open');
-            lightbox.setAttribute('aria-hidden', 'false');
-            lbVideo.currentTime = 0;
-            lbVideo.play();
-            document.body.style.overflow = 'hidden';
-        }
+        if (!lightbox || !lbInner) return;
 
         function closeLightbox() {
             lightbox.classList.remove('open');
             lightbox.setAttribute('aria-hidden', 'true');
-            lbVideo.pause();
             document.body.style.overflow = '';
+            if (lbVideo) { lbVideo.pause(); lbVideo.style.display = 'none'; }
+            if (lbImg) lbImg.style.display = 'none';
         }
 
-        frame.addEventListener('click', openLightbox);
-        frame.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                openLightbox();
+        function openVideo() {
+            if (lbImg) lbImg.style.display = 'none';
+            if (lbVideo) {
+                lbVideo.style.display = 'block';
+                lbVideo.currentTime = 0;
+                lbVideo.play();
             }
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openImage(src, alt) {
+            if (lbVideo) lbVideo.style.display = 'none';
+            if (!lbImg) {
+                lbImg = document.createElement('img');
+                lbImg.alt = '';
+                lbInner.appendChild(lbImg);
+            }
+            lbImg.src = src;
+            lbImg.alt = alt || '';
+            lbImg.style.display = 'block';
+            lightbox.classList.add('open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Demo video frame
+        var demoFrame = document.getElementById('demo-frame');
+        if (demoFrame) {
+            demoFrame.addEventListener('click', function (e) {
+                e.preventDefault();
+                openVideo();
+            });
+            demoFrame.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openVideo();
+                }
+            });
+        }
+
+        // All screenshot frames — feature panels + gallery
+        document.querySelectorAll('.crt-frame-mini').forEach(function (frame) {
+            var img = frame.querySelector('img');
+            if (!img) return;
+            frame.setAttribute('role', 'button');
+            frame.setAttribute('tabindex', '0');
+            frame.addEventListener('click', function () {
+                openImage(img.src, img.alt);
+            });
+            frame.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openImage(img.src, img.alt);
+                }
+            });
         });
 
-        // Close on backdrop click (but not on video click)
+        // Close handlers
         lightbox.addEventListener('click', function (e) {
             if (e.target === lightbox) closeLightbox();
         });
         if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
-
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && lightbox.classList.contains('open')) {
                 closeLightbox();
@@ -339,6 +383,6 @@
         initStatCounters();
         initGallery();
         initCopyButton();
-        initDemoLightbox();
+        initLightbox();
     });
 })();
