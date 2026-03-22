@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=VT323&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/css/style.css?v=6">
+    <link rel="stylesheet" href="/css/style.css?v=7">
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -69,6 +69,9 @@
     -->
     <!-- Skip to content -->
     <a href="#main" class="skip-link">Skip to content</a>
+
+    <!-- Scroll progress bar -->
+    <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
 
     <!-- Preloader -->
     <div id="preloader" class="preloader" aria-hidden="true">
@@ -224,6 +227,9 @@
                 <div class="hero-ctas">
                     <a href="#quickstart" class="btn btn--primary">GET STARTED</a>
                     <a href="https://github.com/JameZUK/Arkana" class="btn btn--ghost" target="_blank" rel="noopener noreferrer">VIEW ON GITHUB</a>
+                    <a href="https://github.com/JameZUK/Arkana/stargazers" class="hero-stars" target="_blank" rel="noopener noreferrer" aria-label="Star Arkana on GitHub">
+                        <img src="https://img.shields.io/github/stars/JameZUK/Arkana?style=flat&amp;color=00ff41&amp;labelColor=001200&amp;logo=github&amp;logoColor=00ff41" alt="GitHub stars" height="20" loading="lazy">
+                    </a>
                 </div>
             </div>
 
@@ -244,6 +250,18 @@
                     <span class="glow">live web dashboard</span> &mdash; so you can investigate
                     malware by describing what you want to know.
                 </p>
+                <div class="powered-by reveal">
+                    <span class="powered-by-label">POWERED BY</span>
+                    <div class="powered-by-logos">
+                        <span class="powered-by-item">angr</span>
+                        <span class="powered-by-item">YARA</span>
+                        <span class="powered-by-item">capa</span>
+                        <span class="powered-by-item">FLOSS</span>
+                        <span class="powered-by-item">Binary Refinery</span>
+                        <span class="powered-by-item">Qiling</span>
+                        <span class="powered-by-item">Speakeasy</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -318,7 +336,7 @@
                         </ul>
                     </div>
                     <div class="feature-screenshot crt-frame-mini">
-                        <img src="/img/screenshots/overview.png" alt="Arkana dashboard overview showing auto-enrichment results" loading="lazy" width="600" height="375">
+                        <img src="/img/screenshots/overview.png" alt="Arkana dashboard overview showing binary classification, risk assessment, and auto-enrichment results with AI-generated verdict" loading="lazy" width="600" height="375">
                     </div>
                 </div>
 
@@ -334,7 +352,7 @@
                         </ul>
                     </div>
                     <div class="feature-screenshot crt-frame-mini">
-                        <img src="/img/screenshots/functions.png" alt="Arkana function explorer with enrichment scores" loading="lazy" width="600" height="375">
+                        <img src="/img/screenshots/functions.png" alt="Arkana function explorer showing decompiled functions with triage flags, enrichment scores, and complexity metrics" loading="lazy" width="600" height="375">
                     </div>
                 </div>
 
@@ -386,7 +404,7 @@
                         </ul>
                     </div>
                     <div class="feature-screenshot crt-frame-mini">
-                        <img src="/img/screenshots/callgraph.png" alt="Arkana interactive call graph visualization" loading="lazy" width="600" height="375">
+                        <img src="/img/screenshots/callgraph.png" alt="Arkana interactive call graph with hierarchical layout showing function relationships and enrichment score indicators" loading="lazy" width="600" height="375">
                     </div>
                 </div>
 
@@ -411,7 +429,7 @@
                         </ul>
                     </div>
                     <div class="feature-screenshot crt-frame-mini">
-                        <img src="/img/screenshots/sections.png" alt="Arkana section map with entropy heatmap" loading="lazy" width="600" height="375">
+                        <img src="/img/screenshots/sections.png" alt="Arkana PE section map displaying permission flags and colour-coded entropy heatmap for packing detection" loading="lazy" width="600" height="375">
                     </div>
                 </div>
 
@@ -427,7 +445,7 @@
                         </ul>
                     </div>
                     <div class="feature-screenshot crt-frame-mini">
-                        <img src="/img/screenshots/strings.png" alt="Arkana strings analysis with FLOSS categorization" loading="lazy" width="600" height="375">
+                        <img src="/img/screenshots/strings.png" alt="Arkana strings analysis showing FLOSS-extracted decoded, stack, and static strings with sifter scores" loading="lazy" width="600" height="375">
                     </div>
                 </div>
             </div>
@@ -439,52 +457,52 @@
                 <h2 class="section-label reveal">// DASHBOARD GALLERY</h2>
                 <div class="gallery-wrap reveal">
                     <button class="gallery-arrow gallery-arrow--left" aria-label="Scroll left">&lsaquo;</button>
-                    <div class="gallery-track" id="gallery-track">
+                    <div class="gallery-track" id="gallery-track" tabindex="0" role="region" aria-label="Screenshot gallery, use arrow keys to scroll">
                         <div class="gallery-item">
                             <div class="crt-frame-mini">
-                                <img src="/img/screenshots/overview.png" alt="Dashboard Overview" loading="lazy" width="400" height="250">
+                                <img src="/img/screenshots/overview.png" alt="Dashboard overview with file identity, risk assessment, and analysis digest" loading="lazy" width="400" height="250">
                             </div>
                             <span class="gallery-label">OVERVIEW</span>
                         </div>
                         <div class="gallery-item">
                             <div class="crt-frame-mini">
-                                <img src="/img/screenshots/functions.png" alt="Function Explorer" loading="lazy" width="400" height="250">
+                                <img src="/img/screenshots/functions.png" alt="Function explorer with sortable columns, triage flags, and inline decompilation" loading="lazy" width="400" height="250">
                             </div>
                             <span class="gallery-label">FUNCTIONS</span>
                         </div>
                         <div class="gallery-item">
                             <div class="crt-frame-mini">
-                                <img src="/img/screenshots/callgraph.png" alt="Call Graph" loading="lazy" width="400" height="250">
+                                <img src="/img/screenshots/callgraph.png" alt="Interactive call graph with dagre layout and tabbed analysis sidebar" loading="lazy" width="400" height="250">
                             </div>
                             <span class="gallery-label">CALL GRAPH</span>
                         </div>
                         <div class="gallery-item">
                             <div class="crt-frame-mini">
-                                <img src="/img/screenshots/hexview.png" alt="Hex View" loading="lazy" width="400" height="250">
+                                <img src="/img/screenshots/hexview.png" alt="Hex view with infinite scroll and jump-to-offset navigation" loading="lazy" width="400" height="250">
                             </div>
                             <span class="gallery-label">HEX VIEW</span>
                         </div>
                         <div class="gallery-item">
                             <div class="crt-frame-mini">
-                                <img src="/img/screenshots/strings.png" alt="Strings Analysis" loading="lazy" width="400" height="250">
+                                <img src="/img/screenshots/strings.png" alt="Strings analysis with FLOSS type filtering and sifter scores" loading="lazy" width="400" height="250">
                             </div>
                             <span class="gallery-label">STRINGS</span>
                         </div>
                         <div class="gallery-item">
                             <div class="crt-frame-mini">
-                                <img src="/img/screenshots/mitre.png" alt="MITRE ATT&CK Matrix" loading="lazy" width="400" height="250">
+                                <img src="/img/screenshots/mitre.png" alt="MITRE ATT&CK technique matrix with extracted IOC indicators" loading="lazy" width="400" height="250">
                             </div>
                             <span class="gallery-label">MITRE ATT&CK</span>
                         </div>
                         <div class="gallery-item">
                             <div class="crt-frame-mini">
-                                <img src="/img/screenshots/sections.png" alt="Section Map" loading="lazy" width="400" height="250">
+                                <img src="/img/screenshots/sections.png" alt="Section permissions table with clickable entropy heatmap" loading="lazy" width="400" height="250">
                             </div>
                             <span class="gallery-label">SECTIONS</span>
                         </div>
                         <div class="gallery-item">
                             <div class="crt-frame-mini">
-                                <img src="/img/screenshots/diff.png" alt="Binary Diff" loading="lazy" width="400" height="250">
+                                <img src="/img/screenshots/diff.png" alt="Binary diff comparison showing matched and unmatched functions" loading="lazy" width="400" height="250">
                             </div>
                             <span class="gallery-label">BINARY DIFF</span>
                         </div>
@@ -628,6 +646,7 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="compare-scroll-hint" aria-hidden="true">SCROLL &#8594;</div>
             </div>
         </section>
 
@@ -647,16 +666,23 @@
                             <span class="copy-label">COPY</span>
                         </button>
                     </div>
-                    <pre class="terminal-body" id="quickstart-code"><code><span class="terminal-prompt">$</span> git clone https://github.com/JameZUK/Arkana.git
-<span class="terminal-prompt">$</span> cd Arkana && ./run.sh --build
-<span class="terminal-prompt">$</span> claude mcp add --scope project arkana -- ./run.sh --stdio
-<span class="terminal-prompt">$</span> claude</code></pre>
+                    <div class="terminal-body" id="quickstart-code">
+                        <div class="qs-line" data-cmd="git clone https://github.com/JameZUK/Arkana.git"><span class="terminal-prompt">$</span> git clone https://github.com/JameZUK/Arkana.git</div>
+                        <div class="qs-line" data-cmd="cd Arkana &amp;&amp; ./run.sh --build"><span class="terminal-prompt">$</span> cd Arkana &amp;&amp; ./run.sh --build</div>
+                        <div class="qs-line" data-cmd="claude mcp add --scope project arkana -- ./run.sh --stdio"><span class="terminal-prompt">$</span> claude mcp add --scope project arkana -- ./run.sh --stdio</div>
+                        <div class="qs-line" data-cmd="claude"><span class="terminal-prompt">$</span> claude</div>
+                    </div>
                 </div>
                 <p class="quickstart-note reveal">Requires Docker and <a href="https://claude.ai/claude-code" target="_blank" rel="noopener noreferrer">Claude Code</a>. See the <a href="https://github.com/JameZUK/Arkana#readme" target="_blank" rel="noopener noreferrer">full installation guide</a> for details.</p>
             </div>
         </section>
 
     </main>
+
+    <!-- Back to top -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
 
     <!-- Footer -->
     <footer class="footer">
@@ -702,6 +728,6 @@
     </div>
 
     <!-- IS IT A GAME, OR IS IT REAL? -->
-    <script defer src="/js/main.js?v=6"></script>
+    <script defer src="/js/main.js?v=7"></script>
 </body>
 </html>

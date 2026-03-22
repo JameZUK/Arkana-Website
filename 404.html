@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — DEFCON 1 — Arkana</title>
+    <link rel="icon" href="/img/logo_icon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=VT323&display=swap">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #000d00;
+            color: #00ff41;
+            font-family: 'VT323', 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
+            pointer-events: none;
+            z-index: 2;
+        }
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.65) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        .container {
+            position: relative;
+            z-index: 3;
+            padding: 40px;
+        }
+        .error-code {
+            font-size: 120px;
+            line-height: 1;
+            text-shadow: 0 0 30px rgba(0,255,65,0.5), 0 0 60px rgba(0,255,65,0.2);
+            margin-bottom: 16px;
+        }
+        .error-label {
+            font-size: 24px;
+            letter-spacing: 8px;
+            color: #00cc33;
+            margin-bottom: 32px;
+        }
+        .terminal {
+            background: rgba(0,12,0,0.6);
+            border: 1px solid #005518;
+            padding: 24px 32px;
+            display: inline-block;
+            text-align: left;
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 32px;
+            max-width: 520px;
+        }
+        .dim { color: #005518; }
+        .response { color: #00cc33; }
+        .warn { color: #ff4141; }
+        .home-link {
+            display: inline-block;
+            font-family: 'VT323', 'Courier New', monospace;
+            font-size: 18px;
+            letter-spacing: 2px;
+            color: #00ff41;
+            border: 1px solid #005518;
+            padding: 12px 28px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .home-link:hover {
+            background: rgba(0,255,65,0.08);
+            border-color: #00ff41;
+            box-shadow: 0 0 15px rgba(0,255,65,0.3);
+        }
+        .quote {
+            margin-top: 32px;
+            font-size: 14px;
+            color: #005518;
+            letter-spacing: 1px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            body::before { display: none; }
+        }
+        @media (max-width: 480px) {
+            .error-code { font-size: 80px; }
+            .terminal { font-size: 16px; padding: 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="error-code">404</div>
+        <div class="error-label">DEFCON 1</div>
+        <div class="terminal">
+            <span class="dim">&gt;</span> ACCESS REQUESTED RESOURCE<br>
+            <span class="response">&nbsp;&nbsp;ERROR: TARGET NOT FOUND</span><br>
+            <br>
+            <span class="dim">&gt;</span> TRACE ROUTE<br>
+            <span class="warn">&nbsp;&nbsp;CONNECTION LOST</span><br>
+            <br>
+            <span class="dim">&gt;</span> RECOMMENDATION<br>
+            <span class="response">&nbsp;&nbsp;RETURN TO COMMAND CENTRE</span>
+        </div>
+        <br>
+        <a href="/" class="home-link">[ RETURN TO BASE ]</a>
+        <div class="quote">"THE ONLY WINNING MOVE IS NOT TO PLAY."</div>
+    </div>
+</body>
+</html>

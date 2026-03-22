@@ -1147,6 +1147,109 @@ a:hover { color: var(--highlight); }
     opacity: 0.3;
 }
 
+/* ===== Scroll Progress ===== */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: var(--primary);
+    box-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+    z-index: 9991;
+}
+
+/* ===== Back to Top ===== */
+.back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 12, 0, 0.85);
+    border: 1px solid var(--primary-ghost);
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9990;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, border-color 0.2s, background 0.2s;
+    font-family: var(--font);
+}
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+.back-to-top:hover {
+    border-color: var(--primary);
+    background: rgba(0, 255, 65, 0.08);
+}
+
+/* ===== Powered By ===== */
+.powered-by {
+    text-align: center;
+    padding: 32px 24px 0;
+}
+.powered-by-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--primary-ghost);
+    display: block;
+    margin-bottom: 16px;
+}
+.powered-by-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 32px;
+    align-items: center;
+}
+.powered-by-item {
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: var(--primary-ghost);
+    opacity: 0.5;
+    transition: opacity 0.2s, color 0.2s;
+}
+.powered-by-item:hover {
+    opacity: 1;
+    color: var(--primary-dim);
+}
+
+/* ===== GitHub Stars ===== */
+.hero-stars {
+    display: flex;
+    align-items: center;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+.hero-stars:hover { opacity: 1; }
+
+/* ===== Quick Start Typing ===== */
+.qs-line {
+    line-height: 1.8;
+    font-size: inherit;
+    color: inherit;
+    white-space: nowrap;
+}
+.qs-cursor {
+    animation: cursorBlink 0.7s step-end infinite;
+}
+
+/* ===== Compare Scroll Hint ===== */
+.compare-scroll-hint {
+    display: none;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--primary-ghost);
+    padding: 8px 0;
+    opacity: 0.5;
+}
+
 /* ===== Scroll Reveal Animations ===== */
 .reveal {
     opacity: 0;
@@ -1269,6 +1372,7 @@ a:hover { color: var(--highlight); }
     .compare-table { font-size: 11px; }
     .compare-table th,
     .compare-table td { padding: 8px 10px; }
+    .compare-scroll-hint { display: block; }
 
     .quickstart-terminal { margin: 0 -8px; border-radius: 0; }
     .terminal-body { font-size: 11px; padding: 16px; }
