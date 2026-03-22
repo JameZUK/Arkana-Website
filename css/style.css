@@ -605,14 +605,12 @@ a:hover { color: var(--highlight); }
     position: fixed;
     inset: 0;
     z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background: rgba(0, 4, 0, 0.92);
     backdrop-filter: blur(8px);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
+    overflow-y: auto;
     cursor: pointer;
 }
 .demo-lightbox.open {
@@ -621,21 +619,31 @@ a:hover { color: var(--highlight); }
 }
 .demo-lightbox-inner {
     max-width: 95vw;
-    max-height: 90vh;
     width: 100%;
+    margin: 40px auto;
     position: relative;
+    cursor: default;
 }
+/* Video: constrain to viewport height */
 .demo-lightbox-inner video {
     width: 100%;
     max-height: 90vh;
     border: 1px solid var(--primary-ghost);
     border-radius: 4px;
 }
+/* Images: full width, scroll vertically */
+.demo-lightbox-inner img {
+    width: 100%;
+    border: 1px solid var(--primary-ghost);
+    border-radius: 4px;
+}
 .demo-lightbox-close {
-    position: absolute;
-    top: -36px;
-    right: 0;
-    background: none;
+    position: sticky;
+    top: 8px;
+    float: right;
+    margin-bottom: -32px;
+    z-index: 2;
+    background: rgba(0, 8, 0, 0.85);
     border: 1px solid var(--primary-ghost);
     color: var(--primary-dim);
     font-family: var(--font);
@@ -648,11 +656,6 @@ a:hover { color: var(--highlight); }
 .demo-lightbox-close:hover {
     color: var(--primary);
     border-color: var(--primary);
-}
-.demo-lightbox-inner img {
-    width: 100%;
-    max-height: 90vh;
-    object-fit: contain;
     border: 1px solid var(--primary-ghost);
     border-radius: 4px;
 }
