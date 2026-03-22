@@ -379,8 +379,8 @@ a:hover { color: var(--highlight); }
     text-align: left;
     margin-bottom: 32px;
     min-height: 240px;
-    font-family: 'VT323', 'Courier New', monospace;
-    font-size: 22px;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 18px;
     line-height: 1.7;
 }
 
@@ -1038,14 +1038,14 @@ a:hover { color: var(--highlight); }
 
 .terminal-body {
     padding: 20px 24px;
-    font-family: 'VT323', 'Courier New', monospace;
-    font-size: 20px;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 16px;
     line-height: 1.8;
     color: var(--primary-dim);
     overflow-x: auto;
 }
 .terminal-body code {
-    font-family: 'VT323', 'Courier New', monospace;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
 }
 .terminal-prompt {
     color: var(--primary);
@@ -1243,8 +1243,8 @@ a:hover { color: var(--highlight); }
     padding: 20px;
 }
 .skill-cmd {
-    font-family: 'VT323', 'Courier New', monospace;
-    font-size: 22px;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
+    font-size: 18px;
     color: var(--primary);
     text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
     display: block;
@@ -1403,7 +1403,7 @@ a:hover { color: var(--highlight); }
     .compare-scroll-hint { display: block; }
 
     .quickstart-terminal { margin: 0 -8px; border-radius: 0; }
-    .terminal-body { font-size: 16px; padding: 16px; }
+    .terminal-body { font-size: 13px; padding: 16px; }
 
     .skills-grid { grid-template-columns: 1fr; }
 

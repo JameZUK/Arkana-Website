@@ -401,7 +401,7 @@
         function showFalken() {
             var toast = document.createElement('div');
             toast.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);' +
-                'font-family:VT323,Courier New,monospace;font-size:28px;color:#00ff41;' +
+                'font-family:Courier Prime,Courier New,Courier,monospace;font-size:24px;color:#00ff41;' +
                 'text-shadow:0 0 20px rgba(0,255,65,0.6);z-index:10001;text-align:center;' +
                 'background:rgba(0,4,0,0.95);padding:40px 60px;border:1px solid #005518;' +
                 'opacity:0;transition:opacity 0.5s;pointer-events:none;';
