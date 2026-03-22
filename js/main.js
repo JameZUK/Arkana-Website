@@ -330,18 +330,13 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Demo video frame
-        var demoFrame = document.getElementById('demo-frame');
-        if (demoFrame) {
-            demoFrame.addEventListener('click', function (e) {
+        // Demo video expand button (overlay on top of video)
+        var demoBtn = document.getElementById('demo-expand-btn');
+        if (demoBtn) {
+            demoBtn.addEventListener('click', function (e) {
                 e.preventDefault();
+                e.stopPropagation();
                 openVideo();
-            });
-            demoFrame.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openVideo();
-                }
             });
         }
 

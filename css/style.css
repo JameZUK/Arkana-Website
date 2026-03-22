@@ -569,30 +569,35 @@ a:hover { color: var(--highlight); }
     pointer-events: none;
 }
 
-/* Demo expand hint */
+/* Demo click overlay — sits on top of video to capture all clicks */
+.crt-click-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 12px;
+    font-family: var(--font);
+}
+.crt-click-overlay:hover ~ .crt-scanlines,
+.crt-screen:hover {
+    cursor: pointer;
+}
 .crt-expand-hint {
-    text-align: center;
-    margin-top: 10px;
     font-size: 10px;
     letter-spacing: 2px;
     color: var(--primary-ghost);
-    transition: color 0.2s;
+    transition: color 0.2s, text-shadow 0.2s;
+    background: rgba(0, 8, 0, 0.6);
+    padding: 4px 12px;
 }
-.crt-frame[role="button"] {
-    cursor: pointer;
-}
-.crt-frame[role="button"] video,
-.crt-frame[role="button"] .crt-scanlines,
-.crt-frame[role="button"] .crt-vignette {
-    pointer-events: none;
-}
-.crt-frame[role="button"]:hover .crt-expand-hint {
+.crt-click-overlay:hover .crt-expand-hint {
     color: var(--primary-dim);
-}
-.crt-frame[role="button"]:hover .crt-bezel {
-    box-shadow:
-        inset 0 0 30px rgba(0, 0, 0, 0.5),
-        0 0 60px rgba(0, 255, 65, 0.1);
+    text-shadow: 0 0 6px rgba(0, 255, 65, 0.3);
 }
 
 /* Demo lightbox */

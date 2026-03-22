@@ -262,7 +262,7 @@
             <div class="container">
                 <h2 class="section-label reveal">// LIVE DEMONSTRATION</h2>
                 <p class="section-subtitle reveal">Full AsyncRAT triage &mdash; from file open to verdict &mdash; in one session</p>
-                <div class="crt-frame reveal" id="demo-frame" role="button" tabindex="0" aria-label="Click to expand demo video">
+                <div class="crt-frame reveal" id="demo-frame">
                     <div class="crt-bezel">
                         <div class="crt-screen">
                             <video autoplay muted loop playsinline preload="metadata" poster="/img/screenshots/demo-poster.png">
@@ -272,9 +272,11 @@
                             </video>
                             <div class="crt-scanlines" aria-hidden="true"></div>
                             <div class="crt-vignette" aria-hidden="true"></div>
+                            <button class="crt-click-overlay" id="demo-expand-btn" aria-label="Click to expand demo video">
+                                <span class="crt-expand-hint">CLICK TO EXPAND</span>
+                            </button>
                         </div>
                     </div>
-                    <div class="crt-expand-hint" aria-hidden="true">CLICK TO EXPAND</div>
                 </div>
                 <p class="demo-caption reveal">Open file &rarr; Auto-enrichment &rarr; Triage &rarr; Decompile &rarr; IOC extraction &rarr; Full report</p>
             </div>
