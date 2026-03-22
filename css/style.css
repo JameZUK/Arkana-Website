@@ -73,8 +73,8 @@ a:hover { color: var(--highlight); }
         0deg,
         transparent,
         transparent 2px,
-        rgba(0, 0, 0, 0.08) 2px,
-        rgba(0, 0, 0, 0.08) 4px
+        rgba(0, 0, 0, 0.18) 2px,
+        rgba(0, 0, 0, 0.18) 4px
     );
     pointer-events: none;
     z-index: 9998;
@@ -740,7 +740,7 @@ a:hover { color: var(--highlight); }
     inset: 6px;
     background: repeating-linear-gradient(
         0deg, transparent, transparent 2px,
-        rgba(0, 0, 0, 0.06) 2px, rgba(0, 0, 0, 0.06) 4px
+        rgba(0, 0, 0, 0.15) 2px, rgba(0, 0, 0, 0.15) 4px
     );
     pointer-events: none;
     border-radius: 3px;
@@ -1226,7 +1226,7 @@ a:hover { color: var(--highlight); }
     .scanlines {
         background: repeating-linear-gradient(
             0deg, transparent, transparent 3px,
-            rgba(0, 0, 0, 0.06) 3px, rgba(0, 0, 0, 0.06) 6px
+            rgba(0, 0, 0, 0.15) 3px, rgba(0, 0, 0, 0.15) 6px
         );
     }
 }
