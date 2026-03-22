@@ -35,7 +35,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=VT323&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/css/style.css?v=7">
+    <link rel="stylesheet" href="/css/style.css?v=8">
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -654,7 +654,7 @@
         <section id="quickstart" class="section quickstart">
             <div class="container">
                 <h2 class="section-label reveal">// GET STARTED</h2>
-                <p class="section-subtitle reveal">Up and running in 4 commands</p>
+                <p class="section-subtitle reveal">Up and running in 5 commands</p>
                 <div class="quickstart-terminal reveal">
                     <div class="terminal-chrome">
                         <span class="terminal-dot terminal-dot--red"></span>
@@ -671,9 +671,25 @@
                         <div class="qs-line" data-cmd="cd Arkana &amp;&amp; ./run.sh --build"><span class="terminal-prompt">$</span> cd Arkana &amp;&amp; ./run.sh --build</div>
                         <div class="qs-line" data-cmd="claude mcp add --scope project arkana -- ./run.sh --stdio"><span class="terminal-prompt">$</span> claude mcp add --scope project arkana -- ./run.sh --stdio</div>
                         <div class="qs-line" data-cmd="claude"><span class="terminal-prompt">$</span> claude</div>
+                        <div class="qs-line" data-cmd="/arkana-analyse" data-prompt="&gt;"><span class="terminal-prompt">&gt;</span> /arkana-analyse</div>
                     </div>
                 </div>
                 <p class="quickstart-note reveal">Requires Docker and <a href="https://claude.ai/claude-code" target="_blank" rel="noopener noreferrer">Claude Code</a>. See the <a href="https://github.com/JameZUK/Arkana#readme" target="_blank" rel="noopener noreferrer">full installation guide</a> for details.</p>
+
+                <div class="skills-info reveal">
+                    <h3 class="section-label">// CLAUDE SKILLS</h3>
+                    <p class="section-subtitle">Built-in slash commands for Claude Code</p>
+                    <div class="skills-grid">
+                        <div class="skill-card bracket-panel">
+                            <code class="skill-cmd">/arkana-analyse</code>
+                            <p class="skill-desc">Full binary analysis &mdash; autonomous 7-phase workflow covering triage, decompilation, symbolic execution, emulation, config extraction, and reporting across all 259 tools</p>
+                        </div>
+                        <div class="skill-card bracket-panel">
+                            <code class="skill-cmd">/arkana-learn</code>
+                            <p class="skill-desc">Interactive reverse engineering tutor &mdash; adaptive lessons from beginner to expert with hands-on exercises using real binaries as the teaching platform</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -728,6 +744,6 @@
     </div>
 
     <!-- IS IT A GAME, OR IS IT REAL? -->
-    <script defer src="/js/main.js?v=7"></script>
+    <script defer src="/js/main.js?v=8"></script>
 </body>
 </html>

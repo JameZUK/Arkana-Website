@@ -1038,13 +1038,14 @@ a:hover { color: var(--highlight); }
 
 .terminal-body {
     padding: 20px 24px;
-    font-size: 14px;
+    font-family: 'VT323', 'Courier New', monospace;
+    font-size: 20px;
     line-height: 1.8;
     color: var(--primary-dim);
     overflow-x: auto;
 }
 .terminal-body code {
-    font-family: var(--font);
+    font-family: 'VT323', 'Courier New', monospace;
 }
 .terminal-prompt {
     color: var(--primary);
@@ -1228,6 +1229,33 @@ a:hover { color: var(--highlight); }
 }
 .hero-stars:hover { opacity: 1; }
 
+/* ===== Skills Info ===== */
+.skills-info {
+    max-width: 720px;
+    margin: 48px auto 0;
+}
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.skill-card {
+    padding: 20px;
+}
+.skill-cmd {
+    font-family: 'VT323', 'Courier New', monospace;
+    font-size: 22px;
+    color: var(--primary);
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+    display: block;
+    margin-bottom: 8px;
+}
+.skill-desc {
+    font-size: 12px;
+    color: var(--primary-dim);
+    line-height: 1.5;
+}
+
 /* ===== Quick Start Typing ===== */
 .qs-line {
     line-height: 1.8;
@@ -1375,7 +1403,9 @@ a:hover { color: var(--highlight); }
     .compare-scroll-hint { display: block; }
 
     .quickstart-terminal { margin: 0 -8px; border-radius: 0; }
-    .terminal-body { font-size: 11px; padding: 16px; }
+    .terminal-body { font-size: 16px; padding: 16px; }
+
+    .skills-grid { grid-template-columns: 1fr; }
 
     .footer-grid {
         flex-direction: column;

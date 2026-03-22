@@ -271,7 +271,8 @@
                 'git clone https://github.com/JameZUK/Arkana.git',
                 'cd Arkana && ./run.sh --build',
                 'claude mcp add --scope project arkana -- ./run.sh --stdio',
-                'claude'
+                'claude',
+                '/arkana-analyse'
             ].join('\n');
 
             navigator.clipboard.writeText(commands).then(function () {
@@ -491,7 +492,7 @@
         // Add prompt
         var prompt = document.createElement('span');
         prompt.className = 'terminal-prompt';
-        prompt.textContent = '$';
+        prompt.textContent = line.dataset.prompt || '$';
         line.appendChild(prompt);
         line.appendChild(document.createTextNode(' '));
 
