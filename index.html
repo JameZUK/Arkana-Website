@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arkana — Binary Intelligence Platform</title>
-    <meta name="description" content="Arkana is an MCP server that gives your AI 284 binary analysis tools — decompilation, symbolic execution, debugging, YARA/capa/FLOSS, emulation, and a live web dashboard.">
+    <meta name="description" content="Arkana is an MCP server that gives your AI 289 binary analysis tools — decompilation, symbolic execution, debugging, YARA/capa/FLOSS, emulation, and a live web dashboard.">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Arkana — Binary Intelligence Platform">
-    <meta property="og:description" content="Your entire malware analysis lab, behind one AI prompt. 284 MCP tools for binary analysis.">
+    <meta property="og:description" content="Your entire malware analysis lab, behind one AI prompt. 289 MCP tools for binary analysis.">
     <meta property="og:image" content="https://arkana.re/img/og-image.png">
     <meta property="og:url" content="https://arkana.re/">
     <meta property="og:type" content="website">
@@ -17,7 +17,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Arkana — Binary Intelligence Platform">
-    <meta name="twitter:description" content="Your entire malware analysis lab, behind one AI prompt. 284 MCP tools for binary analysis.">
+    <meta name="twitter:description" content="Your entire malware analysis lab, behind one AI prompt. 289 MCP tools for binary analysis.">
     <meta name="twitter:image" content="https://arkana.re/img/og-image.png">
 
     <!-- Canonical -->
@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;700&family=VT323&display=swap">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="/css/style.css?v=11">
+    <link rel="stylesheet" href="/css/style.css?v=12">
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -45,7 +45,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Arkana",
-        "description": "An MCP server exposing 284 binary analysis tools to AI clients. Supports PE, ELF, and Mach-O formats with integrations for angr, capa, FLOSS, YARA, Binary Refinery, Qiling, and Speakeasy.",
+        "description": "An MCP server exposing 289 binary analysis tools to AI clients. Supports PE, ELF, and Mach-O formats with integrations for angr, capa, FLOSS, YARA, Binary Refinery, Qiling, and Speakeasy.",
         "applicationCategory": "SecurityApplication",
         "operatingSystem": "Linux, macOS, Windows (Docker)",
         "url": "https://arkana.re/",
@@ -241,7 +241,7 @@
                     <div class="terminal-line terminal-line--blank"></div>
                     <div class="terminal-line" data-type="command" data-speed="30">IDENTIFY SYSTEM</div>
                     <div class="terminal-line" data-type="response" data-speed="15">ARKANA // BINARY INTELLIGENCE PLATFORM</div>
-                    <div class="terminal-line" data-type="response" data-speed="15">284 MCP TOOLS ACTIVE</div>
+                    <div class="terminal-line" data-type="response" data-speed="15">289 MCP TOOLS ACTIVE</div>
                     <div class="terminal-line" data-type="response" data-speed="15">STATUS: ONLINE</div>
                     <div class="terminal-line terminal-line--blank"></div>
                     <div class="terminal-line" data-type="command" data-speed="30">SHALL WE PLAY A GAME?</div>
@@ -274,7 +274,7 @@
             <div class="container">
                 <p class="pitch-text reveal">
                     Arkana is an <span class="glow">MCP server</span> that gives your AI
-                    <span class="glow">284 binary analysis tools</span> &mdash; decompilation,
+                    <span class="glow">289 binary analysis tools</span> &mdash; decompilation,
                     symbolic execution, interactive debugging,
                     <span class="glow">YARA/capa/FLOSS</span>, emulation, and a
                     <span class="glow">live web dashboard</span> &mdash; so you can investigate
@@ -385,7 +385,7 @@
                 <h2 class="section-label reveal">// THREAT ASSESSMENT</h2>
                 <div class="stats-grid">
                     <div class="stat-panel bracket-panel reveal">
-                        <div class="stat-number" data-target="260">0</div>
+                        <div class="stat-number" data-target="289">0</div>
                         <div class="stat-label">MCP Tools</div>
                         <div class="stat-sublabel">TOOLS ACTIVE</div>
                     </div>
@@ -400,7 +400,7 @@
                         <div class="stat-sublabel">FORMATS</div>
                     </div>
                     <div class="stat-panel bracket-panel reveal">
-                        <div class="stat-number" data-target="7">0</div>
+                        <div class="stat-number" data-target="14">0</div>
                         <div class="stat-label">Example Reports</div>
                         <div class="stat-sublabel">ANALYSES</div>
                     </div>
@@ -457,8 +457,8 @@
 
                 <div class="feature-row feature-row--reverse reveal-right">
                     <div class="feature-text">
-                        <h3 class="feature-title">284 MCP Tools</h3>
-                        <p class="feature-headline">"One prompt. 284 possibilities."</p>
+                        <h3 class="feature-title">289 MCP Tools</h3>
+                        <p class="feature-headline">"One prompt. 289 possibilities."</p>
                         <ul class="feature-list">
                             <li>Decompilation, disassembly, and CFG analysis via angr</li>
                             <li>YARA scanning, capa matching, FLOSS string extraction</li>
@@ -563,6 +563,22 @@
                         <img src="/img/screenshots/strings.png" alt="Arkana strings analysis showing FLOSS-extracted decoded, stack, and static strings with sifter scores" loading="lazy" width="600" height="375">
                     </div>
                 </div>
+
+                <div class="feature-row reveal-left">
+                    <div class="feature-text">
+                        <h3 class="feature-title">Function Similarity</h3>
+                        <p class="feature-headline">"Match functions across binaries. Instantly."</p>
+                        <ul class="feature-list">
+                            <li>BSim-style architecture-independent function matching</li>
+                            <li>8 feature groups: CFG, API calls, VEX IR, strings, constants</li>
+                            <li>Auto-indexes every binary during enrichment</li>
+                            <li>Whole-binary triage with confidence scoring</li>
+                        </ul>
+                    </div>
+                    <div class="feature-screenshot crt-frame-mini">
+                        <img src="/img/screenshots/similarity.png" alt="Arkana similarity page showing BSim-style function matching with cross-binary triage and signature database" loading="lazy" width="600" height="375">
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -617,9 +633,9 @@
                         </div>
                         <div class="gallery-item">
                             <div class="crt-frame-mini">
-                                <img src="/img/screenshots/diff.png" alt="Binary diff comparison showing matched and unmatched functions" loading="lazy" width="400" height="250">
+                                <img src="/img/screenshots/similarity.png" alt="BSim-style function similarity matching with cross-binary triage and signature database management" loading="lazy" width="400" height="250">
                             </div>
-                            <span class="gallery-label">BINARY DIFF</span>
+                            <span class="gallery-label">SIMILARITY</span>
                         </div>
                     </div>
                     <button class="gallery-arrow gallery-arrow--right" aria-label="Scroll right">&rsaquo;</button>
@@ -665,8 +681,43 @@
                     </a>
                     <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
                         <span class="report-badge report-badge--generic">ANALYSIS</span>
-                        <h3 class="report-name">Generic PE</h3>
-                        <p class="report-summary">Comprehensive PE analysis demonstrating full tool coverage</p>
+                        <h3 class="report-name">Trojan.Delshad</h3>
+                        <p class="report-summary">Multi-stage BYOVD loader with payload carving and attack chain diagram</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-ternary-trap.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--ctf">CTF</span>
+                        <h3 class="report-name">Ternary Trap</h3>
+                        <p class="report-summary">Neural network password lock with ternary MLP reconstruction and DFS password search</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-acrstealer.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--stealer">STEALER</span>
+                        <h3 class="report-name">ACRStealer</h3>
+                        <p class="report-summary">Go-compiled info stealer with custom 5-stage cipher and PEB-walking API evasion</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-salatstealer.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--stealer">STEALER</span>
+                        <h3 class="report-name">SalatStealer</h3>
+                        <p class="report-summary">3-layer Go stealer with AES-256-CBC decryption, targeting 16 browsers and 23 wallets</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-stealc-autoit.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--stealer">STEALER</span>
+                        <h3 class="report-name">StealC v2 AutoIt3</h3>
+                        <p class="report-summary">7-layer process hollowing loader with RanRot PRNG decryption and RC4+LZNT1 extraction</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-elysium-rat.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--rat">RAT</span>
+                        <h3 class="report-name">Elysium RAT</h3>
+                        <p class="report-summary">.NET plugin-based RAT with 313 recovered C# files and dual C2 dead drop resolver</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-crysome-rat.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--rat">RAT</span>
+                        <h3 class="report-name">CrySome RAT</h3>
+                        <p class="report-summary">Modular .NET RAT with BSOD-on-kill self-protection and HVNC for 6 browsers</p>
+                    </a>
+                    <a href="https://github.com/JameZUK/Arkana/blob/main/docs/examples/example-report-malbazaar-rat.md" class="report-card bracket-panel reveal" target="_blank" rel="noopener noreferrer">
+                        <span class="report-badge report-badge--rat">RAT</span>
+                        <h3 class="report-name">WinHTTP RAT</h3>
+                        <p class="report-summary">MBA-obfuscated RAT with full C2 protocol reversal and Cloudflare bypass</p>
                     </a>
                 </div>
             </div>
@@ -746,6 +797,13 @@
                                 <td><span class="dash">&mdash;</span></td>
                             </tr>
                             <tr>
+                                <td>Function Similarity</td>
+                                <td class="compare-highlight"><span class="check">&#10003;</span> BSim</td>
+                                <td><span class="check dim">&#10003;</span></td>
+                                <td><span class="partial">BinDiff</span></td>
+                                <td><span class="dash">&mdash;</span></td>
+                            </tr>
+                            <tr>
                                 <td>Auto-Enrichment</td>
                                 <td class="compare-highlight"><span class="check">&#10003;</span></td>
                                 <td><span class="dash">&mdash;</span></td>
@@ -798,7 +856,7 @@
                     <div class="skills-grid">
                         <div class="skill-card bracket-panel">
                             <code class="skill-cmd">/arkana-analyse</code>
-                            <p class="skill-desc">Full binary analysis &mdash; autonomous 7-phase workflow covering triage, decompilation, symbolic execution, emulation, config extraction, and reporting across all 284 tools</p>
+                            <p class="skill-desc">Full binary analysis &mdash; autonomous 7-phase workflow covering triage, decompilation, symbolic execution, emulation, config extraction, and reporting across all 289 tools</p>
                         </div>
                         <div class="skill-card bracket-panel">
                             <code class="skill-cmd">/arkana-learn</code>
@@ -860,6 +918,6 @@
     </div>
 
     <!-- IS IT A GAME, OR IS IT REAL? -->
-    <script defer src="/js/main.js?v=10"></script>
+    <script defer src="/js/main.js?v=11"></script>
 </body>
 </html>
